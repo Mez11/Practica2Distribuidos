@@ -1,40 +1,72 @@
 package com.practica2.entidades;
 
-import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
+import com.delta.hb.BasicEntity;
+
 /**
  *
- * @author Omar
+ * @author 
  */
 
 @Entity
 @Table(name = "alumno")
-public class Alumno implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long matricula;
-    private String nombreAlumno;
-    private String paternoAlumno;
-    private String maternoAlumno;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fechaNacimiento;
-    private String calle;
-    private String colonia;
-    private int numero;
-    private long codigoPostal;
-    private char sexo;
-    private String eMail;
-
+public class Alumno implements BasicEntity {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3580717819123860073L;
+	private Carrera carrera;
+	@Id
+	@Column (name="matricula")
+    private long matricula;
+	@Column(name ="nombreAlumno")
+    private String nombreAlumno;
+	@Column(name="paternoAlumno")
+    private String paternoAlumno;
+	@Column(name="maternoAlumno")
+    private String maternoAlumno;
+	@Column(name="fechaNacimiento")
+    private Date fechaNacimiento;
+	@Column(name="calle")
+    private String calle;
+	@Column(name="colonia")
+    private String colonia;
+	@Column(name="numero")
+    private int numero;
+	@Column(name="codigoPostal")
+    private long codigoPostal;
+	@Column(name="sexo")
+    private char sexo;
+	@Column(name="eMail")
+    private String eMail;
+    
+    
+    @ManyToOne
+    @JoinColumn(name="idCarrera")
+    public Carrera getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(Carrera carrera) {
+		this.carrera = carrera;
+	}
+
+	/**
      * @return the matricula
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getMatricula() {
         return matricula;
     }
@@ -49,6 +81,7 @@ public class Alumno implements Serializable {
     /**
      * @return the nombreAlumno
      */
+    @Column(name="nombreAlumno")
     public String getNombreAlumno() {
         return nombreAlumno;
     }
@@ -63,6 +96,7 @@ public class Alumno implements Serializable {
     /**
      * @return the paternoAlumno
      */
+    @Column(name="paternoAlumno")
     public String getPaternoAlumno() {
         return paternoAlumno;
     }
@@ -77,6 +111,7 @@ public class Alumno implements Serializable {
     /**
      * @return the maternoAlumno
      */
+    @Column(name="maternoAlumno")
     public String getMaternoAlumno() {
         return maternoAlumno;
     }
@@ -91,6 +126,8 @@ public class Alumno implements Serializable {
     /**
      * @return the fechaNacimiento
      */
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name="fechaNacimiento")
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -105,6 +142,7 @@ public class Alumno implements Serializable {
     /**
      * @return the calle
      */
+    @Column(name="calle")
     public String getCalle() {
         return calle;
     }
@@ -119,6 +157,7 @@ public class Alumno implements Serializable {
     /**
      * @return the colonia
      */
+    @Column(name="colonia")
     public String getColonia() {
         return colonia;
     }
@@ -133,6 +172,7 @@ public class Alumno implements Serializable {
     /**
      * @return the numero
      */
+    @Column(name="numero")
     public int getNumero() {
         return numero;
     }
@@ -147,6 +187,7 @@ public class Alumno implements Serializable {
     /**
      * @return the codigoPostal
      */
+    @Column(name="codigoPostal")
     public long getCodigoPostal() {
         return codigoPostal;
     }
@@ -161,6 +202,7 @@ public class Alumno implements Serializable {
     /**
      * @return the sexo
      */
+    @Column(name="sexo")
     public char getSexo() {
         return sexo;
     }
@@ -175,6 +217,7 @@ public class Alumno implements Serializable {
     /**
      * @return the eMail
      */
+    @Column(name="email")
     public String geteMail() {
         return eMail;
     }
@@ -186,9 +229,4 @@ public class Alumno implements Serializable {
         this.eMail = eMail;
     }
     
-    @Override
-    public String toString() {
-        return "com.practica2.entidades.Carrera[ id=" + getMatricula() + " ]";
-    }
-    
-}
+ }

@@ -1,32 +1,50 @@
 package com.practica2.entidades;
 
-/**
- *
- * @author Omar
- */
-import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.delta.hb.BasicEntity;
 
 /**
  *
- * @author Omar
+ * @author 
  */
 
 @Entity
-@Table(name = "alumno")
-public class Calificaciones implements Serializable {
-    @Id
+@Table(name = "calificaciones")
+public class Calificaciones implements BasicEntity {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4277002621635296334L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//Cambiar idCalificaciones int
     private long idCalificaciones;
+	@Column(name="puntaje")
     private double puntaje;
 
-    /**
+	 @ManyToOne
+	 @JoinColumn(name="idExamen")
+	private int idExamen;
+    public int getIdExamen() {
+		return idExamen;
+	}
+
+	public void setIdExamen(int idExamen) {
+		this.idExamen = idExamen;
+	}
+
+	/**
      * @return the idCalificaciones
      */
+   @Column(name="matricula")
     public long getMatricula() {
         return idCalificaciones;
     }

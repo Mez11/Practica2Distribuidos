@@ -1,24 +1,30 @@
 package com.practica2.entidades;
 
 import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.delta.hb.BasicEntity;
+
 /**
  *
- * @author Omar
+ * @author 
  */
 @Entity
 @Table(name = "materias")
-public class Materias implements Serializable {
+public class Materias implements BasicEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMaterias;
+    @Column(name="nombreMateria")
     private String nombreMateria;
+    @Column(name="creditos")
     private int creditos;
 
     /**

@@ -2,28 +2,46 @@ package com.practica2.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
+import com.delta.hb.BasicEntity;
+
 /**
  *
- * @author Omar
+ * @author 
  */
 @Entity
 @Table(name = "examen")
-public class Examen implements Serializable {
+public class Examen implements BasicEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idExamen;
+    //Checar como se declara DATE
     @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name="fecha")
     private Date fecha;
+    @ManyToOne
+    @JoinColumn(name="idMaterias")
+    private int idMaterias;
+    public int getIdMaterias() {
+		return idMaterias;
+	}
 
-    /**
+	public void setIdMaterias(int idMaterias) {
+		this.idMaterias = idMaterias;
+	}
+
+	/**
      * @return the idExamen
      */
     public int getIdExamen() {
