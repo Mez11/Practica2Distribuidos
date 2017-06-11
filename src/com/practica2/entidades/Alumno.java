@@ -28,6 +28,7 @@ public class Alumno implements BasicEntity {
 	private static final long serialVersionUID = 3580717819123860073L;
 	private Carrera carrera;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name="matricula")
     private long matricula;
 	@Column(name ="nombreAlumno")
@@ -51,10 +52,12 @@ public class Alumno implements BasicEntity {
 	@Column(name="eMail")
     private String eMail;
     
-    
+    //Foranea de carrera
     @ManyToOne
     @JoinColumn(name="idCarrera")
-    public Carrera getCarrera() {
+    Carrera carre;
+   
+	public Carrera getCarrera() {
 		return carrera;
 	}
 
@@ -62,11 +65,19 @@ public class Alumno implements BasicEntity {
 		this.carrera = carrera;
 	}
 
+	public Carrera getCarre() {
+		return carre;
+	}
+
+	public void setCarre(Carrera carre) {
+		this.carre = carre;
+	}
+
 	/**
      * @return the matricula
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getMatricula() {
         return matricula;
     }

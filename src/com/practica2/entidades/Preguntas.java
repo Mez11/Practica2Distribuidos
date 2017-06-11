@@ -28,9 +28,18 @@ public class Preguntas implements BasicEntity {
     private String pregunta;
     @ManyToOne
     @JoinColumn(name="idExamen")
-    private int idExamen;
+    Examen examen;
+    
 
-    /**
+    public Examen getExamen() {
+		return examen;
+	}
+
+	public void setExamen(Examen examen) {
+		this.examen = examen;
+	}
+
+	/**
      * @return the idPregunta
      */
     public int getIdPregunta() {

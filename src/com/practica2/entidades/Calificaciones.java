@@ -29,16 +29,17 @@ public class Calificaciones implements BasicEntity {
     private long idCalificaciones;
 	@Column(name="puntaje")
     private double puntaje;
-
+	//Examen foranea
 	 @ManyToOne
 	 @JoinColumn(name="idExamen")
-	private int idExamen;
-    public int getIdExamen() {
-		return idExamen;
+	 private Examen examen;
+
+    public Examen getExamen() {
+		return examen;
 	}
 
-	public void setIdExamen(int idExamen) {
-		this.idExamen = idExamen;
+	public void setExamen(Examen examen) {
+		this.examen = examen;
 	}
 
 	/**

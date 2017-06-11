@@ -26,20 +26,24 @@ public class Carrera implements BasicEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCarrera;
+	
 	@Column(name="nombreCarrera")
     private String nombreCarrera;
+	
 	@Column(name="duracion")
     private int duracion;
 	@ManyToOne
 	@JoinColumn(name="idCentroDeTrabajo")
-	private int idCentroDeTrabajo;
-
-    public int getIdCentroDeTrabajo() {
-		return idCentroDeTrabajo;
+	
+    CentroDeTrabajo centro;
+    
+	
+	public CentroDeTrabajo getCentro() {
+		return centro;
 	}
 
-	public void setIdCentroDeTrabajo(int idCentroDeTrabajo) {
-		this.idCentroDeTrabajo = idCentroDeTrabajo;
+	public void setCentro(CentroDeTrabajo centro) {
+		this.centro = centro;
 	}
 
 	/**

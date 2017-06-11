@@ -29,13 +29,16 @@ public class Respuestas implements BasicEntity {
     @ManyToOne
     @JoinColumn(name="idPregunta")
     private int idPregunta;
+    Preguntas preguntas;
+    
+   
 
-    public int getIdPregunta() {
-		return idPregunta;
+	public Preguntas getPreguntas() {
+		return preguntas;
 	}
 
-	public void setIdPregunta(int idPregunta) {
-		this.idPregunta = idPregunta;
+	public void setPreguntas(Preguntas preguntas) {
+		this.preguntas = preguntas;
 	}
 
 	/**

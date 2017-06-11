@@ -32,13 +32,14 @@ public class Examen implements BasicEntity {
     private Date fecha;
     @ManyToOne
     @JoinColumn(name="idMaterias")
-    private int idMaterias;
-    public int getIdMaterias() {
-		return idMaterias;
+    Materias materias;
+    
+	public Materias getMaterias() {
+		return materias;
 	}
 
-	public void setIdMaterias(int idMaterias) {
-		this.idMaterias = idMaterias;
+	public void setMaterias(Materias materias) {
+		this.materias = materias;
 	}
 
 	/**
